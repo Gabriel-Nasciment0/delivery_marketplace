@@ -1,0 +1,19 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "Hambúrguer Clássico",
+            "price": 25,
+            "image": "https://via.placeholder.com/150",
+            "description": "Pão, carne e queijo"
+        },
+        {
+            "id": 2,
+            "name": "Hambúrguer Bacon",
+            "price": 30,
+            "image": "https://via.placeholder.com/150",
+            "description": "Com bacon crocante"
+        }
+    ],
+    "orders": []
+}
