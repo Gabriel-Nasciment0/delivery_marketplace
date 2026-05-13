@@ -1,16 +1,22 @@
 import "./style.css"
-function ProductCard({ Product, onAdd }) {
+function ProductCard({ product, onAdd }) {
     return (
         <div className="product-card">
             <img
-                // src={Product.image}
-                alt={Product.name}
+                // src={product.image}
+                alt={product.name}
             />
 
-            <h2>{Product.name}</h2>
-            <p>R$ {Product.price.toFixed(2)}</p>
+            <h2>{product.name}</h2>
+            <p>R$ {product.price.toFixed(2)}</p>
 
-            <button onClick={onAdd}>Adicionar</button>
+            <button
+                onClick={() => {
+                    onAdd()
+                }}
+            >
+                Adicionar
+            </button>
         </div>
     )
 }

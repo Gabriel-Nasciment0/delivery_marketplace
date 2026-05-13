@@ -1,0 +1,240 @@
+# 🧩 Requisitos do Projeto — Hamburgueria
+
+# 📌 1. Requisitos Funcionais (o que o sistema faz)
+
+## 🔹 Cliente
+
+* [ ] Visualizar lista de produtos
+* [ ] Visualizar nome, preço e descrição dos produtos
+* [ ] Adicionar produtos ao carrinho
+* [ ] Remover produtos do carrinho
+* [ ] Alterar quantidade dos produtos
+* [ ] Visualizar total do pedido
+* [ ] Finalizar pedido
+* [ ] Escolher forma de pagamento
+* [ ] Informar dados do cliente
+* [ ] Enviar pedido via WhatsApp
+* [ ] Navegar entre páginas
+
+---
+
+## 🔹 Carrinho
+
+* [ ] Persistir itens durante navegação
+* [ ] Somar quantidades corretamente
+* [ ] Calcular total automaticamente
+
+---
+
+## 🔹 Checkout
+
+* [ ] Formulário controlado
+* [ ] Validar campos obrigatórios
+* [ ] Selecionar:
+
+  * PIX
+  * Dinheiro
+  * Cartão
+* [ ] Mostrar instruções de pagamento
+
+---
+
+## 🔹 Admin
+
+* [ ] Visualizar pedidos
+* [ ] Visualizar produtos
+* [ ] Adicionar produto
+* [ ] Editar produto
+* [ ] Remover produto
+
+---
+
+# 📌 2. Requisitos Não Funcionais
+
+* [ ] Responsivo
+* [ ] Mobile first
+* [ ] Código organizado
+* [ ] Componentização
+* [ ] Boa experiência visual
+* [ ] Performance aceitável
+* [ ] Persistência local do carrinho
+* [ ] Acessibilidade básica
+* [ ] Estrutura modular
+* [ ] Navegação intuitiva
+
+---
+
+# 🧠 3. Regras de Negócio
+
+* [ ] Produto repetido soma quantidade
+* [ ] Quantidade mínima = 1
+* [ ] Carrinho vazio não finaliza pedido
+* [ ] Total atualizado automaticamente
+* [ ] Pedido deve conter:
+
+  * produtos
+  * total
+  * forma de pagamento
+  * dados do cliente
+* [ ] PIX:
+
+  * status = aguardando comprovante
+* [ ] Pagamento local:
+
+  * status = pagamento na entrega
+
+---
+
+# 🧱 4. Entidades do Sistema
+
+## 🔹 Product
+
+```js id="productentity"
+Product {
+  id
+  name
+  description
+  price
+  image
+  category
+}
+```
+
+---
+
+## 🔹 CartItem
+
+```js id="cartentity"
+CartItem {
+  id
+  name
+  price
+  quantity
+}
+```
+
+---
+
+## 🔹 Order
+
+```js id="orderentity"
+Order {
+  id
+  customerName
+  phone
+  address
+  paymentMethod
+  paymentStatus
+  items
+  total
+}
+```
+
+---
+
+# 🧭 5. Fluxo do Usuário
+
+## 🔹 Cliente
+
+```id="userflow"
+Usuário entra →
+visualiza produtos →
+adiciona ao carrinho →
+abre carrinho →
+confirma itens →
+vai para checkout →
+preenche dados →
+escolhe pagamento →
+finaliza pedido
+```
+
+---
+
+## 🔹 Admin
+
+```id="adminflow"
+Admin entra →
+visualiza produtos →
+gerencia produtos →
+visualiza pedidos
+```
+
+---
+
+# 🧱 6. Estrutura do Projeto
+
+```bash id="projectstructure"
+src/
+  components/
+  pages/
+  services/
+  context/
+  hooks/
+  utils/
+```
+
+---
+
+# ⚙️ 7. Stack
+
+* React
+* Vite
+* React Router
+* Context API
+* CSS
+* json-server
+* Fetch API
+
+---
+
+# 📱 8. Telas
+
+## 🔹 Cliente
+
+* [ ] Home
+* [ ] Cart
+* [ ] Checkout
+
+---
+
+## 🔹 Admin
+
+* [ ] Dashboard
+* [ ] Products
+* [ ] Orders
+
+---
+
+# 🧩 9. Componentes Principais
+
+* [ ] Header
+* [ ] ProductCard
+* [ ] CartItem
+* [ ] Button
+* [ ] Input
+* [ ] ProductForm
+* [ ] OrderCard
+
+---
+
+# 🧪 10. Testes
+
+* [ ] Produto adiciona corretamente
+* [ ] Quantidade soma corretamente
+* [ ] Remoção funciona
+* [ ] Total calcula corretamente
+* [ ] Rotas funcionando
+* [ ] API funcionando
+* [ ] Formulários funcionando
+* [ ] Layout responsivo
+
+---
+
+# 🔁 11. Refatoração
+
+* [ ] Remover duplicação
+* [ ] Melhorar nomes
+* [ ] Separar lógica
+* [ ] Reutilizar componentes
+* [ ] Melhorar CSS
+* [ ] Melhorar estrutura
