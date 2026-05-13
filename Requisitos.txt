@@ -1,14 +1,16 @@
-# 🧩 Requisitos do Projeto — Hamburgueria
+# 🧩 Requisitos do Projeto — Delivery Multicategoria
 
-# 📌 1. Requisitos Funcionais (o que o sistema faz)
+## 📌 1. Requisitos Funcionais
 
-## 🔹 Cliente
+### 🔹 Cliente
 
-* [ ] Visualizar lista de produtos
-* [ ] Visualizar nome, preço e descrição dos produtos
+* [ ] Visualizar a página inicial com categorias de comida
+* [ ] Visualizar lista de produtos por categoria
+* [ ] Filtrar produtos por tipo de comida
+* [ ] Visualizar nome, preço, descrição e imagem dos produtos
 * [ ] Adicionar produtos ao carrinho
 * [ ] Remover produtos do carrinho
-* [ ] Alterar quantidade dos produtos
+* [ ] Alterar quantidade dos produtos no carrinho
 * [ ] Visualizar total do pedido
 * [ ] Finalizar pedido
 * [ ] Escolher forma de pagamento
@@ -16,40 +18,37 @@
 * [ ] Enviar pedido via WhatsApp
 * [ ] Navegar entre páginas
 
----
+### 🔹 Carrinho
 
-## 🔹 Carrinho
+* [ ] Manter os itens durante a navegação entre páginas
+* [ ] Somar quantidades corretamente quando o mesmo produto for adicionado novamente
+* [ ] Calcular o total automaticamente
+* [ ] Exibir carrinho vazio quando não houver itens
 
-* [ ] Persistir itens durante navegação
-* [ ] Somar quantidades corretamente
-* [ ] Calcular total automaticamente
+### 🔹 Checkout
 
----
-
-## 🔹 Checkout
-
-* [ ] Formulário controlado
+* [ ] Exibir formulário controlado
 * [ ] Validar campos obrigatórios
-* [ ] Selecionar:
+* [ ] Selecionar forma de pagamento:
 
   * PIX
   * Dinheiro
   * Cartão
-* [ ] Mostrar instruções de pagamento
+* [ ] Exibir instruções de pagamento de acordo com a opção escolhida
+* [ ] Confirmar pedido antes do envio
 
----
+### 🔹 Admin
 
-## 🔹 Admin
-
-* [ ] Visualizar pedidos
-* [ ] Visualizar produtos
+* [ ] Visualizar produtos cadastrados
+* [ ] Visualizar pedidos realizados
 * [ ] Adicionar produto
 * [ ] Editar produto
 * [ ] Remover produto
+* [ ] Organizar produtos por categoria
 
 ---
 
-# 📌 2. Requisitos Não Funcionais
+## 📌 2. Requisitos Não Funcionais
 
 * [ ] Responsivo
 * [ ] Mobile first
@@ -64,32 +63,30 @@
 
 ---
 
-# 🧠 3. Regras de Negócio
+## 🧠 3. Regras de Negócio
 
-* [ ] Produto repetido soma quantidade
-* [ ] Quantidade mínima = 1
-* [ ] Carrinho vazio não finaliza pedido
-* [ ] Total atualizado automaticamente
+* [ ] Produto repetido soma quantidade no carrinho
+* [ ] Quantidade mínima de item no carrinho é 1
+* [ ] Carrinho vazio não pode ser finalizado
+* [ ] Total deve ser atualizado automaticamente
 * [ ] Pedido deve conter:
 
   * produtos
   * total
   * forma de pagamento
   * dados do cliente
-* [ ] PIX:
-
-  * status = aguardando comprovante
-* [ ] Pagamento local:
-
-  * status = pagamento na entrega
+* [ ] Se a forma de pagamento for PIX, o sistema deve mostrar instruções para envio do comprovante
+* [ ] Se a forma de pagamento for no local, o sistema deve registrar isso no pedido
+* [ ] Os produtos devem ser organizados por categoria
+* [ ] O sistema deve permitir visualização separada dos itens por categoria
 
 ---
 
-# 🧱 4. Entidades do Sistema
+## 🧱 4. Entidades do Sistema
 
-## 🔹 Product
+### 🔹 Product
 
-```js id="productentity"
+```js
 Product {
   id
   name
@@ -100,11 +97,18 @@ Product {
 }
 ```
 
----
+### 🔹 Category
 
-## 🔹 CartItem
+```js
+Category {
+  id
+  name
+}
+```
 
-```js id="cartentity"
+### 🔹 CartItem
+
+```js
 CartItem {
   id
   name
@@ -113,11 +117,9 @@ CartItem {
 }
 ```
 
----
+### 🔹 Order
 
-## 🔹 Order
-
-```js id="orderentity"
+```js
 Order {
   id
   customerName
@@ -132,12 +134,14 @@ Order {
 
 ---
 
-# 🧭 5. Fluxo do Usuário
+## 🧭 5. Fluxo do Usuário
 
-## 🔹 Cliente
+### 🔹 Cliente
 
-```id="userflow"
+```txt
 Usuário entra →
+visualiza categorias →
+seleciona uma categoria →
 visualiza produtos →
 adiciona ao carrinho →
 abre carrinho →
@@ -145,25 +149,24 @@ confirma itens →
 vai para checkout →
 preenche dados →
 escolhe pagamento →
-finaliza pedido
+finaliza pedido →
+recebe confirmação via WhatsApp
 ```
 
----
+### 🔹 Admin
 
-## 🔹 Admin
-
-```id="adminflow"
+```txt
 Admin entra →
 visualiza produtos →
-gerencia produtos →
-visualiza pedidos
+cadastra/edita/remove produtos →
+visualiza pedidos realizados
 ```
 
 ---
 
-# 🧱 6. Estrutura do Projeto
+## 🧱 6. Estrutura do Projeto
 
-```bash id="projectstructure"
+```bash
 src/
   components/
   pages/
@@ -175,7 +178,7 @@ src/
 
 ---
 
-# ⚙️ 7. Stack
+## ⚙️ 7. Stack
 
 * React
 * Vite
@@ -187,17 +190,16 @@ src/
 
 ---
 
-# 📱 8. Telas
+## 📱 8. Telas
 
-## 🔹 Cliente
+### 🔹 Cliente
 
 * [ ] Home
+* [ ] Categoria / Lista de produtos
 * [ ] Cart
 * [ ] Checkout
 
----
-
-## 🔹 Admin
+### 🔹 Admin
 
 * [ ] Dashboard
 * [ ] Products
@@ -205,9 +207,10 @@ src/
 
 ---
 
-# 🧩 9. Componentes Principais
+## 🧩 9. Componentes Principais
 
 * [ ] Header
+* [ ] CategoryFilter
 * [ ] ProductCard
 * [ ] CartItem
 * [ ] Button
@@ -217,12 +220,13 @@ src/
 
 ---
 
-# 🧪 10. Testes
+## 🧪 10. Testes
 
 * [ ] Produto adiciona corretamente
-* [ ] Quantidade soma corretamente
+* [ ] Produto repetido soma quantidade
 * [ ] Remoção funciona
 * [ ] Total calcula corretamente
+* [ ] Filtro por categoria funciona
 * [ ] Rotas funcionando
 * [ ] API funcionando
 * [ ] Formulários funcionando
@@ -230,7 +234,7 @@ src/
 
 ---
 
-# 🔁 11. Refatoração
+## 🔁 11. Refatoração
 
 * [ ] Remover duplicação
 * [ ] Melhorar nomes
@@ -238,3 +242,6 @@ src/
 * [ ] Reutilizar componentes
 * [ ] Melhorar CSS
 * [ ] Melhorar estrutura
+* [ ] Organizar melhor categorias e páginas
+
+Se quiser, eu posso transformar isso agora em uma versão ainda mais prática, já separando em **MVP 1, MVP 2 e MVP 3** para você implementar sem se perder.

@@ -3,16 +3,26 @@
         {
             "id": 1,
             "name": "Hambúrguer Clássico",
+            "description": "Pão, carne e queijo",
             "price": 25,
             "image": "https://via.placeholder.com/150",
-            "description": "Pão, carne e queijo"
+            "category": "Hambúrguer"
         },
         {
             "id": 2,
-            "name": "Hambúrguer Bacon",
+            "name": "Pizza Calabresa",
+            "description": "Massa, molho de tomate, queijo e calabresa",
+            "price": 50,
+            "image": "https://via.placeholder.com/150",
+            "category": "Pizza"
+        },
+        {
+            "id": 3,
+            "name": "sushi",
+            "description": "Sushi de salmão fresco",
             "price": 30,
             "image": "https://via.placeholder.com/150",
-            "description": "Com bacon crocante"
+            "category": "Japonesa"
         }
     ],
     "orders": []
