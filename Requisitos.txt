@@ -1,90 +1,132 @@
-# 🧩 Requisitos do Projeto — Delivery Multicategoria
+# 🧩 TEMPLATE PROFISSIONAL DE PLANEJAMENTO DE PROJETO
 
-## 📌 1. Requisitos Funcionais
+# 📌 0. Visão Geral do Projeto
 
-### 🔹 Cliente
+## 🔹 Nome do projeto
 
-* [ ] Visualizar a página inicial com categorias de comida
-* [ ] Visualizar lista de produtos por categoria
-* [ ] Filtrar produtos por tipo de comida
-* [ ] Visualizar nome, preço, descrição e imagem dos produtos
-* [ ] Adicionar produtos ao carrinho
-* [ ] Remover produtos do carrinho
-* [ ] Alterar quantidade dos produtos no carrinho
-* [ ] Visualizar total do pedido
-* [ ] Finalizar pedido
-* [ ] Escolher forma de pagamento
-* [ ] Informar dados do cliente
-* [ ] Enviar pedido via WhatsApp
-* [ ] Navegar entre páginas
-
-### 🔹 Carrinho
-
-* [ ] Manter os itens durante a navegação entre páginas
-* [ ] Somar quantidades corretamente quando o mesmo produto for adicionado novamente
-* [ ] Calcular o total automaticamente
-* [ ] Exibir carrinho vazio quando não houver itens
-
-### 🔹 Checkout
-
-* [ ] Exibir formulário controlado
-* [ ] Validar campos obrigatórios
-* [ ] Selecionar forma de pagamento:
-
-  * PIX
-  * Dinheiro
-  * Cartão
-* [ ] Exibir instruções de pagamento de acordo com a opção escolhida
-* [ ] Confirmar pedido antes do envio
-
-### 🔹 Admin
-
-* [ ] Visualizar produtos cadastrados
-* [ ] Visualizar pedidos realizados
-* [ ] Adicionar produto
-* [ ] Editar produto
-* [ ] Remover produto
-* [ ] Organizar produtos por categoria
+• [ Nome do delivery ]
 
 ---
 
-## 📌 2. Requisitos Não Funcionais
+## 🔹 Objetivo
 
-* [ ] Responsivo
-* [ ] Mobile first
-* [ ] Código organizado
-* [ ] Componentização
-* [ ] Boa experiência visual
-* [ ] Performance aceitável
-* [ ] Persistência local do carrinho
-* [ ] Acessibilidade básica
-* [ ] Estrutura modular
-* [ ] Navegação intuitiva
+Desenvolver uma aplicação web de delivery multicategoria para pedidos online.
 
----
+O sistema permitirá que clientes:
 
-## 🧠 3. Regras de Negócio
+* visualizem produtos
+* filtrem categorias
+* adicionem itens ao carrinho
+* finalizem pedidos
 
-* [ ] Produto repetido soma quantidade no carrinho
-* [ ] Quantidade mínima de item no carrinho é 1
-* [ ] Carrinho vazio não pode ser finalizado
-* [ ] Total deve ser atualizado automaticamente
-* [ ] Pedido deve conter:
+Tudo dentro de um único delivery que vende diferentes tipos de comida:
 
-  * produtos
-  * total
-  * forma de pagamento
-  * dados do cliente
-* [ ] Se a forma de pagamento for PIX, o sistema deve mostrar instruções para envio do comprovante
-* [ ] Se a forma de pagamento for no local, o sistema deve registrar isso no pedido
-* [ ] Os produtos devem ser organizados por categoria
-* [ ] O sistema deve permitir visualização separada dos itens por categoria
+* hambúrguer
+* pizza
+* comida japonesa
+* bebidas
+* sobremesas
+
+O objetivo principal é criar um sistema moderno, organizado e escalável para prática de desenvolvimento Front-End com React.
 
 ---
 
-## 🧱 4. Entidades do Sistema
+## 🔹 Público-alvo
 
-### 🔹 Product
+• Clientes de delivery local
+• Pequenos restaurantes/dark kitchens
+• Usuários mobile
+
+---
+
+## 🔹 Escopo do MVP
+
+### MVP 1
+
+• Listagem de produtos
+• Carrinho funcional
+• Categorias
+• Checkout simples
+
+### MVP 2
+
+• Busca de produtos
+• Persistência do carrinho
+• Melhorias visuais
+
+### MVP 3
+
+• Área administrativa
+• CRUD de produtos
+• Gerenciamento de pedidos
+
+---
+
+# 📌 1. Requisitos
+
+# 🔹 Funcionais
+
+• Visualizar produtos
+• Filtrar produtos por categoria
+• Adicionar produto ao carrinho
+• Remover produto do carrinho
+• Alterar quantidade dos produtos
+• Visualizar total do pedido
+• Finalizar pedido
+• Escolher forma de pagamento
+• Informar dados do cliente
+• Enviar pedido via WhatsApp
+• Navegar entre páginas
+• Persistir carrinho localmente
+• Buscar produtos
+
+---
+
+# 🔹 Não Funcionais
+
+• Responsivo
+• Mobile first
+• Código organizado
+• Componentização
+• Performance aceitável
+• Persistência de dados
+• Acessibilidade básica
+• Navegação intuitiva
+• Estrutura escalável
+• Boa experiência visual
+
+---
+
+# 📌 2. Regras de Negócio
+
+• Produto repetido soma quantidade
+• Quantidade mínima = 1
+• Carrinho vazio não pode finalizar pedido
+• Total atualiza automaticamente
+• Pedido deve conter:
+
+* produtos
+* total
+* forma de pagamento
+* dados do cliente
+
+• PIX:
+
+* pagamento pendente até comprovante
+
+• Pagamento presencial:
+
+* status = pagar na entrega/retirada
+
+• Produtos devem pertencer a uma categoria
+
+---
+
+# 🧠 3. Modelagem do Sistema
+
+# 🔹 Entidades
+
+## Product
 
 ```js
 Product {
@@ -97,16 +139,9 @@ Product {
 }
 ```
 
-### 🔹 Category
+---
 
-```js
-Category {
-  id
-  name
-}
-```
-
-### 🔹 CartItem
+## CartItem
 
 ```js
 CartItem {
@@ -117,7 +152,9 @@ CartItem {
 }
 ```
 
-### 🔹 Order
+---
+
+## Order
 
 ```js
 Order {
@@ -134,114 +171,407 @@ Order {
 
 ---
 
-## 🧭 5. Fluxo do Usuário
+# 🔹 Relacionamentos
 
-### 🔹 Cliente
+• Pedido possui vários produtos
+• Produto pertence a uma categoria
+• Carrinho possui vários produtos
 
-```txt
-Usuário entra →
-visualiza categorias →
-seleciona uma categoria →
-visualiza produtos →
-adiciona ao carrinho →
-abre carrinho →
-confirma itens →
-vai para checkout →
-preenche dados →
-escolhe pagamento →
-finaliza pedido →
-recebe confirmação via WhatsApp
-```
+---
 
-### 🔹 Admin
+# 🔹 Fluxo dos Dados
 
 ```txt
-Admin entra →
-visualiza produtos →
-cadastra/edita/remove produtos →
-visualiza pedidos realizados
+Frontend →
+API →
+Resposta →
+Context API →
+UI atualiza
 ```
 
 ---
 
-## 🧱 6. Estrutura do Projeto
+# 🧭 4. Fluxo do Usuário
+
+# 🔹 Fluxo Principal
+
+```txt
+Usuário entra →
+visualiza categorias →
+visualiza produtos →
+adiciona ao carrinho →
+abre carrinho →
+confirma pedido →
+preenche checkout →
+finaliza pedido
+```
+
+---
+
+# 🔹 Fluxos Secundários
+
+• Carrinho vazio
+• API indisponível
+• Produto sem estoque
+• Erro ao carregar produtos
+• Formulário inválido
+
+---
+
+# 🧱 5. Arquitetura
+
+# 🔹 Estrutura de Pastas
 
 ```bash
 src/
+  assets/
   components/
-  pages/
-  services/
   context/
   hooks/
+  pages/
+  routes/
+  services/
+  styles/
   utils/
 ```
 
 ---
 
-## ⚙️ 7. Stack
+# 🔹 Separação de Responsabilidades
 
-* React
-* Vite
-* React Router
-* Context API
-* CSS
-* json-server
-* Fetch API
+• UI → components/pages
+• Lógica → hooks/context/utils
+• Dados/API → services
+• Estado global → context
+• Navegação → routes
 
 ---
 
-## 📱 8. Telas
+# 🔹 Padrão de Componentização
 
-### 🔹 Cliente
+## Componentes reutilizáveis
 
-* [ ] Home
-* [ ] Categoria / Lista de produtos
-* [ ] Cart
-* [ ] Checkout
-
-### 🔹 Admin
-
-* [ ] Dashboard
-* [ ] Products
-* [ ] Orders
+• Button
+• Input
+• Modal
+• Card
 
 ---
 
-## 🧩 9. Componentes Principais
+## Componentes específicos
 
-* [ ] Header
-* [ ] CategoryFilter
-* [ ] ProductCard
-* [ ] CartItem
-* [ ] Button
-* [ ] Input
-* [ ] ProductForm
-* [ ] OrderCard
+• ProductCard
+• CartItem
+• CategoryFilter
+• CheckoutForm
 
 ---
 
-## 🧪 10. Testes
+## Composição
 
-* [ ] Produto adiciona corretamente
-* [ ] Produto repetido soma quantidade
-* [ ] Remoção funciona
-* [ ] Total calcula corretamente
-* [ ] Filtro por categoria funciona
-* [ ] Rotas funcionando
-* [ ] API funcionando
-* [ ] Formulários funcionando
-* [ ] Layout responsivo
+• Header contém navegação
+• Home contém filtros + produtos
+• Cart contém itens + total
 
 ---
 
-## 🔁 11. Refatoração
+# ⚙️ 6. Stack (Tecnologias)
 
-* [ ] Remover duplicação
-* [ ] Melhorar nomes
-* [ ] Separar lógica
-* [ ] Reutilizar componentes
-* [ ] Melhorar CSS
-* [ ] Melhorar estrutura
-* [ ] Organizar melhor categorias e páginas
+• Framework: React
+• Build Tool: Vite
+• Linguagem: JavaScript
+• Estilização: CSS Modules ou CSS padrão
+• Estado global: Context API
+• Roteamento: React Router DOM
+• API: Fetch API
+• Banco de dados: json-server (MVP)
+• Backend: Node.js futuramente
+• Deploy: Vercel/Netlify
 
-Se quiser, eu posso transformar isso agora em uma versão ainda mais prática, já separando em **MVP 1, MVP 2 e MVP 3** para você implementar sem se perder.
+---
+
+# 🧩 7. UI / UX
+
+# 🔹 Telas
+
+• Home
+• Cart
+• Checkout
+• Admin (futuro)
+
+---
+
+# 🔹 Componentes Principais
+
+• Header
+• ProductCard
+• CategoryFilter
+• CartItem
+• Button
+• Input
+• CheckoutForm
+
+---
+
+# 🔹 Estados Visuais
+
+• Loading
+• Erro
+• Vazio
+• Sucesso
+
+---
+
+# 🔹 Responsividade
+
+## Mobile
+
+• navegação simplificada
+• cards empilhados
+
+---
+
+## Tablet
+
+• grid intermediário
+
+---
+
+## Desktop
+
+• grid completo
+• melhor espaçamento
+
+---
+
+# 📐 8. Planejamento Técnico
+
+# 🔹 Setup Inicial
+
+• Criar projeto
+• Configurar estrutura
+• Configurar rotas
+• Configurar API fake
+• Configurar Context API
+
+---
+
+# 🔹 Features
+
+## MVP 1
+
+• Home
+• Carrinho
+• Categorias
+• API
+• Context API
+
+---
+
+## MVP 2
+
+• Checkout
+• Busca
+• Persistência local
+
+---
+
+## MVP 3
+
+• Área admin
+• CRUD
+• Pedidos
+
+---
+
+# 🔹 Integrações
+
+• API fake
+• LocalStorage
+• Context API
+
+---
+
+# 🔹 Dependências
+
+• react-router-dom
+• json-server
+• fetch API
+
+---
+
+# 💻 9. Implementação
+
+# 🔹 Ordem de Desenvolvimento
+
+1. Estrutura base
+2. Rotas
+3. Layout
+4. Componentes
+5. Estado global
+6. API
+7. Funcionalidades
+8. Refatoração
+
+---
+
+# 🔹 Convenções
+
+## Nomenclatura
+
+• PascalCase → componentes
+• camelCase → variáveis/funções
+
+---
+
+## Organização
+
+• Um componente por pasta
+• CSS separado
+
+---
+
+## Commits
+
+```txt
+feat:
+fix:
+refactor:
+style:
+```
+
+---
+
+# 🌿 10. Git e Versionamento
+
+# 🔹 Branches
+
+```txt
+main
+develop
+feature/nome-feature
+```
+
+---
+
+# 🔹 Commits
+
+```txt
+feat: adiciona carrinho
+fix: corrige cálculo total
+refactor: melhora ProductCard
+```
+
+---
+
+# 🧪 11. Testes
+
+# 🔹 Funcionais
+
+• API funcionando
+• Rotas funcionando
+• Carrinho funcionando
+• Checkout funcionando
+
+---
+
+# 🔹 UI
+
+• Responsividade
+• Layout consistente
+• Estados visuais
+
+---
+
+# 🔹 Edge Cases
+
+• Carrinho vazio
+• API indisponível
+• Dados inválidos
+• Produto duplicado
+
+---
+
+# 🚀 12. Deploy
+
+# 🔹 Frontend
+
+• Vercel
+• Netlify
+
+---
+
+# 🔹 Backend (futuro)
+
+• Railway
+• Render
+
+---
+
+# 🔹 Banco (futuro)
+
+• Supabase
+• Neon
+
+---
+
+# 🔹 Variáveis de Ambiente
+
+```env
+VITE_API_URL=
+```
+
+---
+
+# 🔁 13. Refatoração
+
+• Melhorar nomes
+• Separar responsabilidades
+• Remover duplicação
+• Melhorar componentização
+• Otimizar renderização
+• Melhorar CSS
+• Reutilizar lógica
+
+---
+
+# 🛠️ 14. Manutenção e Evolução
+
+# 🔹 Melhorias Futuras
+
+• Login
+• Histórico de pedidos
+• Favoritos
+• Tema dark
+• Upload de imagens
+• Painel administrativo real
+• Backend próprio
+
+---
+
+# 🔹 Bugs Conhecidos
+
+• [ preencher futuramente ]
+
+---
+
+# 📚 15. Aprendizados do Projeto
+
+Ao final:
+• O que aprendi?
+• O que faria diferente?
+• O que preciso estudar melhor?
+• O que ficou bom?
+
+---
+
+# 🧠 MINI CHECKLIST
+
+• Entendi o problema
+• Sei o objetivo do sistema
+• Sei o fluxo do usuário
+• Sei as entidades principais
+• Sei a arquitetura
+• Sei as telas
+• Sei por onde começar
+• Tenho MVP definido
