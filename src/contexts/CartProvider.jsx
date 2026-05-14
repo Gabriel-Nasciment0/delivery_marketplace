@@ -23,8 +23,29 @@ export function CartProvider({ children }) {
         })
     }
 
+    function removeFromCart(productId) {
+        setCart((prevCart) => prevCart.filter((item) => item.id !== productId))
+    }
+
+    function updateQuantity(productId, amount) {
+        setCart((prevCart) =>
+            prevCart
+                .map((item) => {
+                    if (item.id === productId) {
+                        return {
+                            ...item,
+                            quantity: item.quantity + amount,
+                        }
+                    }
+                    return item
+                })
+                .filter((item) => item.quantity > 0),
+        )
+    }
     return (
-        <CartContext.Provider value={{ cart, addToCart }}>
+        <CartContext.Provider
+            value={{ cart, addToCart, removeFromCart, updateQuantity }}
+        >
             {children}
         </CartContext.Provider>
     )

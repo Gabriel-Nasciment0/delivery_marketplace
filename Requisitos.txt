@@ -66,17 +66,17 @@ O objetivo principal é criar um sistema moderno, organizado e escalável para p
 
 # 🔹 Funcionais
 
-• Visualizar produtos
-• Filtrar produtos por categoria
-• Adicionar produto ao carrinho
-• Remover produto do carrinho
-• Alterar quantidade dos produtos
-• Visualizar total do pedido
-• Finalizar pedido
-• Escolher forma de pagamento
-• Informar dados do cliente
-• Enviar pedido via WhatsApp
-• Navegar entre páginas
+X Visualizar produtos
+X Filtrar produtos por categoria
+X Adicionar produto ao carrinho
+X Remover produto do carrinho
+X Alterar quantidade dos produtos
+X Visualizar total do pedido
+X Finalizar pedido
+X Escolher forma de pagamento
+X Informar dados do cliente
+X Enviar pedido via WhatsApp
+X Navegar entre páginas
 • Persistir carrinho localmente
 • Buscar produtos
 
