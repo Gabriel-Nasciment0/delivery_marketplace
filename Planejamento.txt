@@ -26,6 +26,7 @@ Tudo dentro de um único delivery que vende diferentes tipos de comida:
 * comida japonesa
 * bebidas
 * sobremesas
+* ETC...
 
 O objetivo principal é criar um sistema moderno, organizado e escalável para prática de desenvolvimento Front-End com React.
 
@@ -43,15 +44,15 @@ O objetivo principal é criar um sistema moderno, organizado e escalável para p
 
 ### MVP 1
 
-• Listagem de produtos
-• Carrinho funcional
-• Categorias
-• Checkout simples
+X Listagem de produtos
+X Carrinho funcional
+X Categorias
+X Checkout simples
 
 ### MVP 2
 
-• Busca de produtos
-• Persistência do carrinho
+X Persistência do carrinho
+X Busca de produtos
 • Melhorias visuais
 
 ### MVP 3
@@ -77,8 +78,8 @@ X Escolher forma de pagamento
 X Informar dados do cliente
 X Enviar pedido via WhatsApp
 X Navegar entre páginas
-• Persistir carrinho localmente
-• Buscar produtos
+X Persistir carrinho localmente
+X Buscar produtos
 
 ---
 
@@ -99,10 +100,10 @@ X Navegar entre páginas
 
 # 📌 2. Regras de Negócio
 
-• Produto repetido soma quantidade
-• Quantidade mínima = 1
+X Produto repetido soma quantidade
+X Quantidade mínima = 1
 • Carrinho vazio não pode finalizar pedido
-• Total atualiza automaticamente
+X Total atualiza automaticamente
 • Pedido deve conter:
 
 * produtos
@@ -118,7 +119,7 @@ X Navegar entre páginas
 
 * status = pagar na entrega/retirada
 
-• Produtos devem pertencer a uma categoria
+X Produtos devem pertencer a uma categoria
 
 ---
 

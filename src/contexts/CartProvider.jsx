@@ -1,8 +1,13 @@
-import { useState } from "react"
 import { CartContext } from "./CartContext"
+import { useState, useEffect } from "react"
 
 export function CartProvider({ children }) {
-    const [cart, setCart] = useState([])
+    console.log("CartProvider carregado")
+    const [cart, setCart] = useState(() => {
+        const storedCart = localStorage.getItem("cart")
+
+        return storedCart ? JSON.parse(storedCart) : []
+    })
 
     function addToCart(product) {
         setCart((prevCart) => {
@@ -42,9 +47,20 @@ export function CartProvider({ children }) {
                 .filter((item) => item.quantity > 0),
         )
     }
+
+    // Salva o carrinho no localStorage sempre que ele for atualizado
+    useEffect(() => {
+        localStorage.setItem("cart", JSON.stringify(cart))
+    }, [cart])
+
     return (
         <CartContext.Provider
-            value={{ cart, addToCart, removeFromCart, updateQuantity }}
+            value={{
+                cart,
+                addToCart,
+                removeFromCart,
+                updateQuantity,
+            }}
         >
             {children}
         </CartContext.Provider>

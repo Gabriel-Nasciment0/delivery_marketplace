@@ -1,6 +1,6 @@
+import { CartContext } from "../../../contexts/CartContext.js"
 import { useContext } from "react"
 
-import { CartContext } from "../../../contexts/CartContext.js"
 import { Link } from "react-router-dom"
 
 function Cart() {
@@ -10,6 +10,7 @@ function Cart() {
         (acc, item) => acc + item.price * item.quantity,
         0,
     )
+
     return (
         <div>
             <h1>Meu Carrinho</h1>
