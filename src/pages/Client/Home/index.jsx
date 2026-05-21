@@ -2,6 +2,7 @@ import { CartContext } from "../../../contexts/CartContext.js"
 import { useEffect, useState, useContext } from "react"
 import { getProducts } from "../../../services/api.js"
 import ProductCard from "../../../components/ProductCard/index.jsx"
+import "./styles.css"
 
 function Home() {
     const [products, setProducts] = useState([])
@@ -51,13 +52,15 @@ function Home() {
                     </button>
                 ))}
             </div>
-            {filteredProducts.map((p) => (
-                <ProductCard
-                    key={p.id}
-                    product={p}
-                    onAdd={() => addToCart(p)}
-                />
-            ))}
+            <div className="products-grid">
+                {filteredProducts.map((p) => (
+                    <ProductCard
+                        key={p.id}
+                        product={p}
+                        onAdd={() => addToCart(p)}
+                    />
+                ))}
+            </div>
         </div>
     )
 }

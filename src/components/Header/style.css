@@ -1,0 +1,17 @@
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 25px;
+    background-color: white;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+.logo {
+    width: 100px;
+    height: auto;
+    border-radius: 20px;
+}
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
