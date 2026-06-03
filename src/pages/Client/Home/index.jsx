@@ -34,23 +34,35 @@ function Home() {
         return matchesCategory && matchesSearch
     })
     return (
-        <div>
+        <div className="home-container">
             <h1>Produtos</h1>
-            <input
-                type="text"
-                placeholder="Buscar produto"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-            />
-            <div>
-                {categories.map((category) => (
-                    <button
-                        key={category}
-                        onClick={() => setSelectedCategory(category)}
-                    >
-                        {category}
-                    </button>
-                ))}
+            <div className="filters">
+                <input
+                    type="text"
+                    className="search-input"
+                    placeholder="Buscar produto"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                />
+                <h2>Categorias</h2>
+                <div className="category">
+                    {categories.map((category) => (
+                        <button
+                            key={category}
+                            className={
+                                selectedCategory === category ? "active" : ""
+                            }
+                            onClick={() => setSelectedCategory(category)}
+                        >
+                            <img
+                                // src={`/assets/${category.toLowerCase()}.png`}
+                                src="https://images.pexels.com/photos/6605397/pexels-photo-6605397.jpeg"
+                                alt={category}
+                            />
+                            <p>{category}</p>
+                        </button>
+                    ))}
+                </div>
             </div>
             <div className="products-grid">
                 {filteredProducts.map((p) => (

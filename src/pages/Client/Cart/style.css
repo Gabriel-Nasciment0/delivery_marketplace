@@ -1,0 +1,248 @@
+/* =========================
+   CONTAINER
+========================= */
+
+.cart-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.cart-title {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* =========================
+   CARRINHO VAZIO
+========================= */
+
+.empty-cart {
+    max-width: 600px;
+    margin: 80px auto;
+    text-align: center;
+}
+
+.empty-cart h1 {
+    margin-bottom: 20px;
+}
+
+.empty-cart a {
+    display: inline-block;
+    padding: 12px 24px;
+
+    background-color: #28a745;
+    color: white;
+
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+
+    transition: 0.2s;
+}
+
+.empty-cart a:hover {
+    transform: translateY(-2px);
+}
+
+/* =========================
+   LISTA DE ITENS
+========================= */
+
+.cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* =========================
+   ITEM DO CARRINHO
+========================= */
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 16px;
+
+    background-color: #fff;
+    border-radius: 12px;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+    transition: transform 0.2s;
+}
+
+.cart-item:hover {
+    transform: translateY(-2px);
+}
+
+/* =========================
+   INFORMAÇÕES DO PRODUTO
+========================= */
+
+.item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.item-info h2 {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.item-info p {
+    margin: 0;
+    color: #555;
+}
+
+/* =========================
+   CONTROLE DE QUANTIDADE
+========================= */
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quantity-controls span {
+    min-width: 25px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.quantity-controls button {
+    width: 35px;
+    height: 35px;
+
+    border: none;
+    border-radius: 8px;
+
+    background-color: #f1f1f1;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s,
+        transform 0.2s;
+}
+
+.quantity-controls button:hover:not(:disabled) {
+    background-color: #e5e5e5;
+    transform: scale(1.05);
+}
+
+/* Botão desabilitado */
+
+.quantity-controls button:disabled {
+    background-color: #ddd;
+    color: #888;
+
+    cursor: not-allowed;
+
+    transform: none;
+    opacity: 0.7;
+}
+
+/* =========================
+   BOTÃO REMOVER
+========================= */
+
+.remove-btn {
+    padding: 8px 12px;
+
+    border: none;
+    border-radius: 8px;
+
+    background-color: #dc3545;
+    color: white;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s,
+        transform 0.2s;
+}
+
+.remove-btn:hover {
+    background-color: #c82333;
+    transform: scale(1.03);
+}
+
+/* =========================
+   RESUMO DO PEDIDO
+========================= */
+
+.cart-summary {
+    margin-top: 30px;
+    padding: 20px;
+
+    background-color: white;
+    border-radius: 12px;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.cart-summary h2 {
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+/* =========================
+   BOTÃO CHECKOUT
+========================= */
+
+.checkout-btn {
+    display: block;
+
+    width: 100%;
+    padding: 14px;
+
+    text-align: center;
+    text-decoration: none;
+
+    border-radius: 10px;
+
+    background-color: #28a745;
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    transition:
+        background-color 0.2s,
+        transform 0.2s;
+}
+
+.checkout-btn:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+@media (max-width: 768px) {
+    .cart-item {
+        flex-direction: column;
+        gap: 15px;
+
+        text-align: center;
+    }
+
+    .quantity-controls {
+        justify-content: center;
+    }
+
+    .remove-btn {
+        width: 100%;
+    }
+}

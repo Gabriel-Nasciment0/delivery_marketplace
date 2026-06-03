@@ -1,3 +1,47 @@
+.home-container {
+    padding: 10px;
+}
+.filters {
+    margin-bottom: 20px;
+}
+.search-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+}
+.category {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 15px;
+    padding: 10px 0;
+    overflow-x: auto;
+}
+.category button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+.category button:hover {
+    background-color: #e0e0e0;
+}
+.category button.active {
+    background-color: #818181;
+    color: white;
+}
+.category img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.category p {
+    margin: 5px 0;
+}
 .products-grid {
     display: grid;
     grid-template-columns: 1fr;
