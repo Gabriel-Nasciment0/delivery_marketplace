@@ -1,0 +1,167 @@
+/* =========================
+   CONTAINER
+========================= */
+
+.checkout-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.checkout-title {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* =========================
+   RESUMO DO PEDIDO
+========================= */
+
+.order-summary {
+    flex: 1;
+    min-width: 0;
+
+    background-color: #fff;
+    padding: 20px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+    height: fit-content;
+}
+
+.order-summary h2 {
+    margin-bottom: 20px;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 10px 0;
+
+    border-bottom: 1px solid #eee;
+}
+
+.summary-item:last-child {
+    border-bottom: none;
+}
+
+.order-summary h3 {
+    margin-top: 20px;
+    padding-top: 15px;
+
+    border-top: 2px solid #ddd;
+
+    font-size: 1.3rem;
+}
+
+/* =========================
+   FORMULÁRIO
+========================= */
+
+.checkout-form {
+    flex: 2;
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    background-color: #fff;
+
+    padding: 25px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.checkout-form input,
+.checkout-form select,
+.checkout-form textarea {
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #ddd;
+    border-radius: 8px;
+
+    font-size: 1rem;
+
+    transition: border-color 0.2s;
+}
+
+.checkout-form input:focus,
+.checkout-form select:focus,
+.checkout-form textarea:focus {
+    outline: none;
+    border-color: #28a745;
+}
+
+.checkout-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* =========================
+   BOTÃO ENVIAR
+========================= */
+
+.checkout-form button {
+    border: none;
+    width: 100%;
+    padding: 14px;
+
+    border-radius: 10px;
+
+    background-color: #28a745;
+    color: white;
+
+    font-size: 1rem;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s,
+        transform 0.2s;
+}
+
+.checkout-form button:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+/* =========================
+   CARRINHO VAZIO
+========================= */
+
+.checkout-container p {
+    width: 100%;
+    text-align: center;
+}
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+@media (max-width: 768px) {
+    .checkout-container {
+        flex-direction: column;
+    }
+
+    .order-summary,
+    .checkout-form {
+        width: 100%;
+        min-width: unset;
+    }
+}

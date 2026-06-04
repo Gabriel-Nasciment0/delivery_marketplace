@@ -2,7 +2,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 25px;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 16px;
     background-color: white;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -14,4 +16,17 @@
 .nav-links {
     display: flex;
     gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media (max-width: 600px) {
+    .header-container {
+        flex-direction: column;
+    }
+    @media (max-width: 600px) {
+        .nav-links {
+            width: 100%;
+        }
+    }
 }

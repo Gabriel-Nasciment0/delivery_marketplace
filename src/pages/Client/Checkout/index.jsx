@@ -1,5 +1,6 @@
 import { CartContext } from "../../../contexts/CartContext"
 import { useContext, useState } from "react"
+import "./style.css"
 export default function Checkout() {
     const { cart } = useContext(CartContext)
     const [formData, setFormData] = useState({
@@ -17,9 +18,36 @@ export default function Checkout() {
             [name]: value,
         }))
     }
-
     const handleSubmit = (e) => {
         e.preventDefault()
+
+        const paymentStatus =
+            formData.paymentMethod === "PIX" ? "Pendente" : "Pagar na entrega"
+
+        const order = {
+            id: crypto.randomUUID(),
+
+            customerName: formData.name,
+            phone: formData.phone,
+            address: formData.address,
+
+            paymentMethod: formData.paymentMethod,
+            paymentStatus,
+
+            items: cart,
+            total,
+
+            notes: formData.notes,
+
+            createdAt: new Date().toISOString(),
+        }
+
+        const orders = JSON.parse(localStorage.getItem("orders")) || []
+
+        orders.push(order)
+
+        localStorage.setItem("orders", JSON.stringify(orders))
+
         const itemsMessage = cart
             .map(
                 (item) =>
@@ -27,44 +55,84 @@ export default function Checkout() {
             )
             .join("\n")
 
-        const total = cart.reduce(
-            (acc, item) => acc + item.price * item.quantity,
-            0,
-        )
-
         const message = `
-        Novo pedido
+Novo Pedido
 
-        ${itemsMessage}
+${itemsMessage}
 
-        Total: R$ ${total.toFixed(2)}
+Total: R$ ${total.toFixed(2)}
 
-        Cliente
-        Nome: ${formData.name}
-        Telefone: ${formData.phone}
-        Endereço: ${formData.address}
+Cliente
+Nome: ${formData.name}
+Telefone: ${formData.phone}
+Endereço: ${formData.address}
 
-        Método de Pagamento:
-        ${formData.paymentMethod}
+Método de Pagamento:
+${formData.paymentMethod}
 
-        Observações:
-        ${formData.notes}
-        `
+Status:
+${paymentStatus}
+
+Observações:
+${formData.notes}
+`
 
         const encodedMessage = encodeURIComponent(message)
 
-        const phoneNumber = "5531972064997" // Substitua pelo número do WhatsApp do restaurante
+        const phoneNumber = "5531972064997"
+
         const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`
+
         window.open(whatsappUrl, "_blank")
+
+        setFormData({
+            name: "",
+            phone: "",
+            address: "",
+            paymentMethod: "",
+            notes: "",
+        })
     }
 
+    const total = cart.reduce(
+        (acc, item) => acc + item.price * item.quantity,
+        0,
+    )
+
+    if (cart.length === 0) {
+        return (
+            <div className="checkout-container">
+                <h1 className="checkout-title">Carrinho vazio</h1>
+                <p>Adicione produtos antes de finalizar o pedido.</p>
+            </div>
+        )
+    }
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
+        <div className="checkout-container">
+            <h1 className="checkout-title">Finalizar Pedido</h1>
+            <div className="order-summary">
+                <h2>Resumo do Pedido</h2>
+
+                {cart.map((item) => (
+                    <div
+                        key={item.id}
+                        className="summary-item"
+                    >
+                        <span>{item.name}</span>
+                        <span>x{item.quantity}</span>
+                    </div>
+                ))}
+
+                <h3>Total: R$ {total.toFixed(2)}</h3>
+            </div>
+            <form
+                onSubmit={handleSubmit}
+                className="checkout-form"
+            >
                 <input
                     type="text"
                     name="name"
-                    placeholder="Name"
+                    placeholder="Nome"
                     value={formData.name}
                     onChange={handleChange}
                     required
@@ -72,7 +140,7 @@ export default function Checkout() {
                 <input
                     type="text"
                     name="phone"
-                    placeholder="Phone"
+                    placeholder="Telefone"
                     value={formData.phone}
                     onChange={handleChange}
                     required
@@ -80,7 +148,7 @@ export default function Checkout() {
                 <input
                     type="text"
                     name="address"
-                    placeholder="Address"
+                    placeholder="Endereço"
                     value={formData.address}
                     onChange={handleChange}
                     required
@@ -91,20 +159,23 @@ export default function Checkout() {
                     onChange={handleChange}
                     required
                 >
-                    <option value="">Select Payment Method</option>
-                    <option value="credit_card">Credit Card</option>
-                    <option value="debit_card">Debit Card</option>
-                    <option value="pix">Pix</option>
-                    <option value="cash">Cash</option>
+                    <option value="">Selecionar Método de Pagamento</option>
+                    <option value="Cartão de Crédito">Cartão de Crédito</option>
+
+                    <option value="Cartão de Débito">Cartão de Débito</option>
+
+                    <option value="PIX">PIX</option>
+
+                    <option value="Dinheiro">Dinheiro</option>
                 </select>
                 <textarea
                     name="notes"
-                    placeholder="Notes"
+                    placeholder="Observações"
                     value={formData.notes}
                     onChange={handleChange}
                 />
 
-                <button type="submit">Submit</button>
+                <button type="submit">Enviar Pedido via WhatsApp</button>
             </form>
         </div>
     )

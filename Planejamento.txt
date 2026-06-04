@@ -53,7 +53,7 @@ X Checkout simples
 
 X Persistência do carrinho
 X Busca de produtos
-• Melhorias visuais
+X Melhorias visuais
 
 ### MVP 3
 
@@ -102,14 +102,13 @@ X Buscar produtos
 
 X Produto repetido soma quantidade
 X Quantidade mínima = 1
-• Carrinho vazio não pode finalizar pedido
 X Total atualiza automaticamente
-• Pedido deve conter:
+X Pedido deve conter:
 
-* produtos
-* total
-* forma de pagamento
-* dados do cliente
+X produtos
+X total
+X forma de pagamento
+X dados do cliente
 
 • PIX:
 

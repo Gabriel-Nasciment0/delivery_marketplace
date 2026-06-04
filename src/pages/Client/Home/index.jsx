@@ -4,23 +4,40 @@ import { getProducts } from "../../../services/api.js"
 import ProductCard from "../../../components/ProductCard/index.jsx"
 import "./styles.css"
 
+function normalizeText(text) {
+    return text
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+}
 function Home() {
     const [products, setProducts] = useState([])
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(false)
     const [search, setSearch] = useState("")
     const [selectedCategory, setSelectedCategory] = useState("Todos")
-    const { addToCart, cart } = useContext(CartContext)
-    console.log(cart)
+    const { addToCart } = useContext(CartContext)
+
     useEffect(() => {
-        getProducts().then(setProducts)
+        async function loadProducts() {
+            try {
+                const data = await getProducts()
+                setProducts(data)
+            } catch (err) {
+                console.error("Erro ao carregar produtos:", err)
+                setError(true)
+            } finally {
+                setLoading(false)
+            }
+        }
+
+        loadProducts()
     }, [])
 
-    const categories = ["Todos", "Hambúrguer", "Pizza", "Japonesa"]
-    const normalizeText = (text) => {
-        return text
-            .toLowerCase()
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "")
-    }
+    const categories = [
+        "Todos",
+        ...new Set(products.map((product) => product.category)),
+    ]
 
     const filteredProducts = products.filter((product) => {
         const matchesCategory =
@@ -33,6 +50,23 @@ function Home() {
 
         return matchesCategory && matchesSearch
     })
+
+    if (loading) {
+        return (
+            <div className="state-message">
+                <h2>Carregando produtos...</h2>
+            </div>
+        )
+    }
+
+    if (error) {
+        return (
+            <div className="state-message">
+                <h2>Erro ao carregar produtos.</h2>
+            </div>
+        )
+    }
+
     return (
         <div className="home-container">
             <h1>Produtos</h1>
@@ -65,13 +99,19 @@ function Home() {
                 </div>
             </div>
             <div className="products-grid">
-                {filteredProducts.map((p) => (
-                    <ProductCard
-                        key={p.id}
-                        product={p}
-                        onAdd={() => addToCart(p)}
-                    />
-                ))}
+                {filteredProducts.length === 0 ? (
+                    <div className="state-message">
+                        <h2>Nenhum produto encontrado.</h2>
+                    </div>
+                ) : (
+                    filteredProducts.map((p) => (
+                        <ProductCard
+                            key={p.id}
+                            product={p}
+                            onAdd={() => addToCart(p)}
+                        />
+                    ))
+                )}
             </div>
         </div>
     )
