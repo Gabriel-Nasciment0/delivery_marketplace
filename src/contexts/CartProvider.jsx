@@ -2,7 +2,6 @@ import { CartContext } from "./CartContext"
 import { useState, useEffect } from "react"
 
 export function CartProvider({ children }) {
-    console.log("CartProvider carregado")
     const [cart, setCart] = useState(() => {
         const storedCart = localStorage.getItem("cart")
 

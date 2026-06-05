@@ -23,8 +23,7 @@ function Home() {
             try {
                 const data = await getProducts()
                 setProducts(data)
-            } catch (err) {
-                console.error("Erro ao carregar produtos:", err)
+            } catch {
                 setError(true)
             } finally {
                 setLoading(false)
