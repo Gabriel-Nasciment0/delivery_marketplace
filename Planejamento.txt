@@ -286,7 +286,7 @@ src/
 • API: Fetch API
 • Banco de dados: json-server (MVP)
 • Backend: Node.js futuramente
-• Deploy: Vercel/Netlify
+• Deploy: Vercel/Render
 
 ---
 
@@ -360,19 +360,19 @@ src/
 
 ## MVP 1
 
-• Home
-• Carrinho
-• Categorias
-• API
-• Context API
+X Home
+X Carrinho
+X Categorias
+X API
+X Context API
 
 ---
 
 ## MVP 2
 
-• Checkout
-• Busca
-• Persistência local
+X Checkout
+X Busca
+X Persistência local
 
 ---
 

@@ -1,4 +1,5 @@
 import { CartContext } from "../../../contexts/CartContext"
+import { createOrder } from "../../../services/api"
 import { useContext, useState } from "react"
 import "./style.css"
 export default function Checkout() {
@@ -18,7 +19,7 @@ export default function Checkout() {
             [name]: value,
         }))
     }
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
         const paymentStatus =
@@ -41,12 +42,6 @@ export default function Checkout() {
 
             createdAt: new Date().toISOString(),
         }
-
-        const orders = JSON.parse(localStorage.getItem("orders")) || []
-
-        orders.push(order)
-
-        localStorage.setItem("orders", JSON.stringify(orders))
 
         const itemsMessage = cart
             .map(
@@ -83,15 +78,21 @@ ${formData.notes}
 
         const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`
 
-        window.open(whatsappUrl, "_blank")
+        try {
+            await createOrder(order)
 
-        setFormData({
-            name: "",
-            phone: "",
-            address: "",
-            paymentMethod: "",
-            notes: "",
-        })
+            window.open(whatsappUrl, "_blank")
+
+            setFormData({
+                name: "",
+                phone: "",
+                address: "",
+                paymentMethod: "",
+                notes: "",
+            })
+        } catch (error) {
+            console.error("Erro ao criar pedido:", error)
+        }
     }
 
     const total = cart.reduce(
