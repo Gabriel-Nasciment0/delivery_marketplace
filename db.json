@@ -1,29 +1,4 @@
 {
-    "products": [
-        {
-            "id": 1,
-            "image": "https://via.placeholder.com/150",
-            "name": "Hambúrguer Clássico",
-            "description": "Pão, carne e queijo",
-            "price": 25,
-            "category": "Hambúrguer"
-        },
-        {
-            "id": 2,
-            "image": "https://via.placeholder.com/150",
-            "name": "Pizza Calabresa",
-            "description": "Massa, molho de tomate, queijo e calabresa",
-            "price": 50,
-            "category": "Pizza"
-        },
-        {
-            "id": 3,
-            "image": "https://via.placeholder.com/150",
-            "name": "sushi",
-            "description": "Sushi de salmão fresco",
-            "price": 30,
-            "category": "Japonesa"
-        }
-    ],
+    "products": [],
     "orders": []
 }

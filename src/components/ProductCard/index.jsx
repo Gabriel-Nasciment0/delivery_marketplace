@@ -4,8 +4,7 @@ function ProductCard({ product, onAdd }) {
         <div className="product-card">
             <img
                 className="product-image"
-                // src={product.image}
-                src="https://images.pexels.com/photos/6605397/pexels-photo-6605397.jpeg"
+                src={product.image}
                 alt={product.name}
             />
             <h2 className="product-name">{product.name}</h2>

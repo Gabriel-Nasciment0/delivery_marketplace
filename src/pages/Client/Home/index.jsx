@@ -88,7 +88,7 @@ function Home() {
                             onClick={() => setSelectedCategory(category)}
                         >
                             <img
-                                // src={`/assets/${category.toLowerCase()}.png`}
+                                src={`/assets/${category.toLowerCase()}.png`}
                                 src="https://images.pexels.com/photos/6605397/pexels-photo-6605397.jpeg"
                                 alt={category}
                             />

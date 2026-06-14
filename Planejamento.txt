@@ -57,9 +57,9 @@ X Melhorias visuais
 
 ### MVP 3
 
-• Área administrativa
-• CRUD de produtos
-• Gerenciamento de pedidos
+X Área administrativa
+X CRUD de produtos
+X Gerenciamento de pedidos
 
 ---
 
