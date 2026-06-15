@@ -74,7 +74,7 @@ ${formData.notes}
 
         const encodedMessage = encodeURIComponent(message)
 
-        const phoneNumber = "5531972064997"
+        const phoneNumber = "" //para testar o envio de pedidos pelo WhattsApp
 
         const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`
 

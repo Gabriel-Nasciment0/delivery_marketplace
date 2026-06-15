@@ -26,12 +26,9 @@ function Header() {
                 >
                     Produtos
                 </Link>
-                <Link
-                    to="/cart"
-                    className="Cart"
-                >
-                    Carrinho ({totalItems}){" "}
-                </Link>
+                <Link to="/cart">Carrinho ({totalItems}) </Link>
+                <Link to="/admin">Pedidos</Link>
+                <Link to="/admin/products">Produtos</Link>
             </nav>
         </header>
     )
