@@ -150,6 +150,7 @@ export default function AdminProducts() {
                     <img
                         src={product.image}
                         alt={product.category}
+                        width="150"
                     />
                     <h3>{product.name}</h3>
 
