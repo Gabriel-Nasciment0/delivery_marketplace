@@ -29,6 +29,7 @@ function Header() {
                 <Link to="/cart">Carrinho ({totalItems}) </Link>
                 <Link to="/admin">Pedidos</Link>
                 <Link to="/admin/products">Produtos</Link>
+                <Link to="/admin/categories">Categorias</Link>
             </nav>
         </header>
     )

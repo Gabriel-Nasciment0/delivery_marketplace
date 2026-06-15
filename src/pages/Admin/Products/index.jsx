@@ -148,7 +148,7 @@ export default function AdminProducts() {
             {products.map((product) => (
                 <div key={product.id}>
                     <img
-                        // src={product.image}
+                        src={product.image}
                         alt={product.category}
                     />
                     <h3>{product.name}</h3>

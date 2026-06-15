@@ -68,3 +68,39 @@ export async function deleteProduct(id) {
         method: "DELETE",
     })
 }
+// Categorias
+
+export async function getCategories() {
+    const response = await fetch(`${BASE_URL}/categories`)
+    return response.json()
+}
+
+export async function createCategory(category) {
+    const response = await fetch(`${BASE_URL}/categories`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(category),
+    })
+
+    return response.json()
+}
+
+export async function updateCategory(id, category) {
+    const response = await fetch(`${BASE_URL}/categories/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(category),
+    })
+
+    return response.json()
+}
+
+export async function deleteCategory(id) {
+    await fetch(`${BASE_URL}/categories/${id}`, {
+        method: "DELETE",
+    })
+}

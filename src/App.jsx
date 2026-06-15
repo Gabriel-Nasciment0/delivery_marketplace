@@ -5,6 +5,7 @@ import ClientCart from "./pages/Client/Cart"
 import ClientCheckout from "./pages/Client/Checkout"
 import AdminHome from "./pages/Admin/Home"
 import AdminProducts from "./pages/Admin/Products"
+import AdminCategories from "./pages/Admin/Categories"
 
 function App() {
     return (
@@ -31,6 +32,10 @@ function App() {
                 <Route
                     path="/admin/products"
                     element={<AdminProducts />}
+                />
+                <Route
+                    path="/admin/categories"
+                    element={<AdminCategories />}
                 />
             </Routes>
         </>
